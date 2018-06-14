@@ -52,7 +52,7 @@ def build_response(session_attributes, speechlet_response):
     """
     Build the full response JSON from the speechlet response
     """
-    print("**** Session Attributes: " +str(session_attributes))
+    #print("**** Session Attributes: " +str(session_attributes))
     return {
         'version': '1.0',
         'sessionAttributes': session_attributes,
@@ -196,7 +196,7 @@ def favorite_food(session):
                 ]
     card_title = "Favorite Food"
 
-    print("****food count: "+ str(food_count))
+    #print("****food count: "+ str(food_count))
     if food_count >= len(food_story) :
         food_string = "He like these many only. If he likes anything else, i will surely tell you. Good Bye. Nice meeting you " + friend_name
         should_end_session = True
@@ -230,7 +230,7 @@ def secret_story(session):
                 ]
     card_title = "Mayank's Secret"
 
-    print("****secret count: "+ str(secret_count))
+    #print("****secret count: "+ str(secret_count))
     if secret_count >= len(secret_story) :
         secret_string = "Till now i could find only there. If i find anything else, i will surely tell you. Good Bye. Nice meeting you " + friend_name
         should_end_session = True
@@ -278,7 +278,7 @@ def on_intent(intent_request, session):
     intent = intent_request['intent']
     intent_name = intent_request['intent']['name']
     
-    print (intent)
+    #print (intent)
     try :
         intent_name_value = intent['slots']['friend_name']['value']
     except :
@@ -338,11 +338,11 @@ def lambda_handler(event, context):
 
 
     if event['session']['new']:
-        print ("**** Reached")
+        #print ("**** Reached")
         on_session_started({'requestId': event['request']['requestId']},
                            event['session'])
 
-    print("**** Intent coming is : " + event['request']['type'])
+    #print("**** Intent coming is : " + event['request']['type'])
     if event['request']['type'] == "LaunchRequest":
         return on_launch(event['request'], event['session'])
     elif event['request']['type'] == "IntentRequest":
